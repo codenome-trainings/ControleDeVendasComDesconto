@@ -11,14 +11,16 @@ double HAMBURGUER = 1.2;
 double CHEESEBURGUER = 1.7;
 double SUCO = 2.2;
 double REFRIGERANTE = 1.0;
-int total = 0;
+double total = 0;
 
-double facaPedido(char lanche[30], int quantidade, int valorDoLanche) {
+double facaPedido(char lanche[30], int quantidade, const int valorDoLanche) {
     printf("\n\n---\n");
     printf("Voce escolheu %s: \n", lanche);
     printf("Preco unitario: %f\n", valorDoLanche);
     printf("Quantidade: %d\n", quantidade);
     printf("Preco deste pedido: %f\n", quantidade * valorDoLanche);
+    printf("Preco sem desconto: %f\n", total);
+    verificaDesconto();
     return valorDoLanche * quantidade;
 }
 
@@ -44,36 +46,29 @@ void menu() {
             return;
         case 100:
             total += facaPedido("Cachorro Quente", quantidade, CACHORRO_QUENTE);
-            printf("Preco: %f\n", total);
             break;
         case 101:
             total += facaPedido("Bauru Simples", quantidade, BAURU_SIMPLES);
-            printf("Preco: %f\n", total);
             break;
         case 102:
             total += facaPedido("Bauru com ovo", quantidade, BAURU_COM_OVO);
-            printf("Preco: %f\n", total);
             break;
         case 103:
             total += facaPedido("Hamburguer", quantidade, HAMBURGUER);
-            printf("Preco: %f\n", total);
             break;
         case 104:
             total += facaPedido("Chessburguer", quantidade, CHEESEBURGUER);
-            printf("Preco: %f\n", total);
             break;
         case 105:
             total += facaPedido("Suco", quantidade, SUCO);
-            printf("Preco: %f\n", total);
             break;
         case 106:
             total += facaPedido("Bauru com ovo", quantidade, REFRIGERANTE);
-            printf("Preco: %f\n", total);
             break;
         default:
             printf("Ops, opcao invalida! Tente novamente...\n\n\n");
     }
-    verificaDesconto();
+
     printf("Desenha fazer mais algum pedido? [1]SIM | [QUALQUER TECLA] ... NAO: ");
     scanf("%d", &escolha);
     if(escolha == 1) {
